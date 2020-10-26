@@ -51,9 +51,9 @@
 			</ul>
 			<!-- Links -->
 
-			<form class="form-inline" id="form" name="search" action="{{ url_for('search') }}" method="GET">
-				<div class="md-form my-0">
-					<input
+	<form class="form-inline" id="form" name="search" action="{{ url_for('search') }}" method="POST">
+		<div class="md-form my-0">
+			<input
               id="input-book-search"
               class="form-control mr-sm-2"
               type="text"
@@ -61,27 +61,22 @@
               aria-label="Search"
               name="searchbox"
             />
-          </div>
-					<button
+         </div>
+		  <button
             class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3"
             type="submit"
           >
             Search
           </button>
-			</form>
+	</form>
 		</div>
 		<!-- Collapsible content -->
 	</nav>
 	<!--/.Navbar-->
 
-	<div>
-		<h3>
-			Title of book here:
-			<span id="book-title"></span>
-		</h3>
-	</div>
+    {% block content %}
 
-	{} {}
+    {% endblock %}
 
 	<!-- Scripts below copied from mdbootstrap.com -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -93,6 +88,9 @@
 	</script>
 	<!-- end of copied scripts-->
 	<script src=" {{ url_for('static', filename='js/main.js') }} "></script>
+
+    {% block scripts %}
+    {% endblock %}
 </body>
 
 </html>

@@ -1,8 +1,7 @@
 import os
 import requests
-import cgi
 from flask import (
-    Flask, flash, render_template,
+    Flask, request, flash, render_template,
     redirect, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -26,8 +25,7 @@ def index():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    form = cgi.FieldStorage()
-    searchterm = form.getvalue('searchbox')
+    searchterm = request.form.get('searchbox')
     URL = "https://www.googleapis.com/books/v1/volumes?q=" + searchterm
     r = requests.get(url=URL)
     data = r.json()
