@@ -1,0 +1,21 @@
+{% extends "base.html" %}  {% block content %}
+
+<!-- Default form register (edited / amended) -->
+<form class="text-center border border-light p-5" action="{{ url_for('register') }}">
+
+    <p class="h4 mb-4">Sign up</p>
+
+    <!-- E-mail -->
+    <input type="username" id="username" name="username" class="form-control mb-4" placeholder="Username">
+
+    <!-- Password -->
+    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+
+    <!-- Sign up button -->
+    <button class="btn primary-color my-4 btn-block white-text" type="submit">Register</button>
+
+</form>
+
+{% endblock %}
+
+
