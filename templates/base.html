@@ -62,6 +62,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('login') }}">Log in</a>
           </li>
