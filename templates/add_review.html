@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+
+<form method="POST" action="">
+  <select id="genre_name" name="genre_name" class="mdb-select md-form validate">
+    <option value="" disabled selected>Choose genres:</option>
+    {% for item in genre %}
+
+    <option value="{{ item.genre_name }}">{{ item.genre_name }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+{% endblock %}
