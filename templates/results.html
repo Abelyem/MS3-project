@@ -3,10 +3,15 @@
 {% for item in data["items"]: %}
 <ul>
 <h6><strong>Title:</strong> </h6><li>{{ item.volumeInfo.title }} 
-<h6><strong>Description:</strong> </h6><p>{{ item.volumeInfo.description }}</p><br>
+<h6><strong>Author:</strong> </h6> {{ item.volumeInfo.authors[0] }} 
+<h6><strong>Description:</strong> </h6><p>{{ item.volumeInfo.description }}</p>
+<br>
 </li>
 </ul>
 {% endfor %}
+
+
+
 
 {% endblock %}
 
