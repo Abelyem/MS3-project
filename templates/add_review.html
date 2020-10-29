@@ -1,13 +1,51 @@
 {% extends "base.html" %} {% block content %}
 
-<form method="POST" action="">
-  <select id="genre_name" name="genre_name" class="mdb-select md-form validate">
+<!-- Material form contact --->
+
+
+<div class="card">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Share a review of something you've read!</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" method="POST" action="">
+
+        <!-- Genre selector -->
+<div class="row">
+  <select id="genre_name" name="genre_name" class="mdb-select md-form validate" required>
     <option value="" disabled selected>Choose genres:</option>
     {% for item in genre %}
 
     <option value="{{ item.genre_name }}">{{ item.genre_name }}</option>
     {% endfor %}
   </select>
-</form>
+  </div>
+            <!-- Name -->
+            <div class="md-form mt-3">
+                <input type="text" id="book_name" name="book_name" class="form-control" required>
+                <label for="book_name">Book titile:</label>
+            </div>
+
+            <!--Message-->
+            <div class="md-form">
+                <textarea id="user_review" name="user_review" maxlength="550" class="form-control md-textarea" rows="3" required></textarea>
+                <label for="user_review">Your review:</label>
+            </div>
+
+            <!-- Send button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Send</button>
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form contact -->
 
 {% endblock %}
