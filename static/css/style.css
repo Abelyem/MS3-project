@@ -17,8 +17,10 @@
     border: 1px solid black;
 }
 
+
+/*--- Styling for index.html - positions reviews made by users to the right side of the page ----*/
 #index-page-reviews {
-    display: flex!important;
-    justify-content: flex-end!important;
-    align-items: right!important;
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
 }
