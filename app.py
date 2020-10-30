@@ -20,8 +20,10 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/index")
 def index():
-    return render_template("base.html")
+    reviews = list(mongo.db.reviews.find())
+    return render_template("index.html", reviews=reviews)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -63,12 +65,12 @@ def login():
 
         if existing_user:
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 flash("Incorrect login details")
                 return redirect(url_for("login"))
@@ -97,8 +99,19 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_review")
+@app.route("/add_review", methods=["GET", "POST"])
 def add_review():
+    if request.method == "POST":
+        review = {
+            "book_name": request.form.get("book_name"),
+            "user_review": request.form.get("user_review"),
+            "genre_name": request.form.getlist("genre_name"),
+            "created_by": session["user"]
+        }
+        mongo.db.reviews.insert_one(review)
+        flash("Your review has been added!")
+        return redirect(url_for("index"))
+
     genre = mongo.db.genre.find().sort("genre_name", 1)
     return render_template("add_review.html", genre=genre)
 
