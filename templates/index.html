@@ -1,25 +1,40 @@
 {% extends "base.html" %} {% block content %}
   
-<div class="container">
-  <div class="row">
-    <div class="col col-example">
-      <div class="row">
-        <div class="col-md-8">
+<!------------------------SEPARATEEEEEEEEEE-->
 
- {% for review in reviews %}
+<div class="container my-5" id="index-page-reviews">
 
 
-            <h6><strong>{{ review.book_name }}</strong></h6>
-            <h6><strong><p> {{ review.user_review }}</p></strong></h6>
-            <h6><strong><p> {{ review.created_by }}</p></strong></h6>
+  <!--Section: Block Content-->
+  <section class="dark-grey-text mb-5">
 
- {% endfor %}
+    <!-- Section heading -->
+    <h3 class="font-weight-bold text-center mb-5">Reviews from others</h3>
 
-        </div>
+
+    <div class="media">
+      <img class=" card-img-100 rounded-circle z-depth-1-half d-flex mr-3" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Generic placeholder image">
+      <div class="media-body">
+       {% for review in reviews %}
+
+        <a>
+          <h5 class="user-name font-weight-bold"><small>{{ review.book_name }}</small></h5>
+        </a>
+        <!-- Rating -->
+        <!--- INSERT EDITABLE STAR SYSTEM -->
+
+        <p class="dark-grey-text article">{{ review.user_review }}</p>
+        <h6 class="user-name font-weight-bold"><small>{{ review.created_by }}</small></h6>
+
+             {% endfor %}
+
       </div>
     </div>
-  </div>
+
+
+	</section>
+  <!--Section: Block Content-->
+
+
 </div>
-
-
 {% endblock %}

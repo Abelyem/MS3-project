@@ -2,6 +2,23 @@
     background-color: red;
 }
 
-.nav-link {
-    padding: 0 10px;
+
+.card {
+    margin-top: 30px;
+}
+
+/* -- code for flashed messages (e.g Registration successful on sign up page) */
+.flash-messages {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.col-md-8, .col-md-4 {
+    border: 1px solid black;
+}
+
+#index-page-reviews {
+    display: flex!important;
+    justify-content: flex-end!important;
+    align-items: right!important;
 }
