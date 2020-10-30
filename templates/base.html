@@ -66,6 +66,9 @@
             <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('add_review') }}">Add review</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('logout') }}">Log out</a>
           </li>
 
@@ -121,7 +124,10 @@
       {% endif %} {% endwith %}
     </section>
 
-    {% block content %} {% endblock %}
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <!-- Scripts below copied from mdbootstrap.com -->
     <script

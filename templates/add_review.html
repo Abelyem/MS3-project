@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
-<!-- Material form contact --->
+
+<!-- Material form contact ----------------------------->
 
 
 <div class="card">
@@ -13,7 +14,7 @@
     <div class="card-body px-lg-5 pt-0">
 
         <!-- Form -->
-        <form class="text-center" method="POST" action="">
+        <form class="text-center" action="{{ url_for('add_review') }}" method="POST">
 
         <!-- Genre selector -->
 <div class="row">
@@ -38,7 +39,7 @@
             </div>
 
             <!-- Send button -->
-            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Send</button>
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Share review</button>
 
         </form>
         <!-- Form -->
