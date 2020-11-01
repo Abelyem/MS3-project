@@ -24,6 +24,11 @@
 
         <p class="dark-grey-text article">{{ review.user_review }}</p>
         <h6 class="user-name font-weight-bold"><small>{{ review.created_by }}</small></h6>
+
+        {% if session["user"] == review.created_by %}        
+        <button type="button" class="btn btn-primary btn-sm">Edit review</button>
+        <button type="button" class="btn btn-elegant btn-sm">Delete</button>
+        {% endif %}
         <hr>
 
       </div>
