@@ -19,14 +19,6 @@
 
 
 /*--- Styling for index.html */ 
-/* Positions reviews made by users to the right side of the page ----*/
-
-#index-page-reviews {
-    display: flex;
-    justify-content: flex-end;
-    align-items: right;
-}
-
 
 /* creates padding between each user review visible on index.html ----*/
 
