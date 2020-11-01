@@ -14,7 +14,7 @@
     <div class="card-body px-lg-5 pt-0">
 
         <!-- Form -->
-        <form class="text-center" action="{{ url_for('add_review') }}" method="POST">
+        <form class="text-center" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
 
         <!-- Genre selector -->
 <div class="row">
@@ -28,18 +28,18 @@
   </div>
             <!-- Name -->
             <div class="md-form mt-3">
-                <input type="text" id="book_name" name="book_name" class="form-control" required>
+                <input type="text" id="book_name" name="book_name" class="form-control" value="{{ review.book_name }}" required>
                 <label for="book_name">Book titile:</label>
             </div>
 
             <!--Message-->
             <div class="md-form">
-                <textarea id="user_review" name="user_review" minlength="100" maxlength="550" class="form-control md-textarea" rows="3" required></textarea>
+                <textarea id="user_review" name="user_review" minlength="100" maxlength="550" class="form-control md-textarea" rows="3" required>{{ review.user_review }}</textarea>
                 <label for="user_review">Your review:</label>
             </div>
 
             <!-- Send button -->
-            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Share review</button>
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Edit review</button>
 
         </form>
         <!-- Form -->
