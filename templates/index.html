@@ -26,11 +26,10 @@
         <h6 class="user-name font-weight-bold"><small>{{ review.created_by }}</small></h6>
 
         {% if session["user"] == review.created_by %}        
-        <button type="button" class="btn btn-primary btn-sm">Edit review</button>
+        <button type="button" class="btn btn-sm" ><a href="{{ url_for('edit_review', review_id=review._id) }}">Edit review</a></button>
         <button type="button" class="btn btn-elegant btn-sm">Delete</button>
         {% endif %}
         <hr>
-
       </div>
     </div>
 
