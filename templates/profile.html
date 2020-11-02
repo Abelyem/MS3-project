@@ -1,14 +1,35 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="text-center border border-light p-5">
-  <h5>{{ username }}'s Profile</h5>
 </div>
 <hr />
 <div>
   <h6>Help a fellow reader out and leave a review on a book you've read:</h6>
   <a class="nav-link" href="{{ url_for('add_review') }}"
-    ><strong>Add a review here</strong></a
-  >
+    ><strong>Add a review here</strong></a>
 </div>
+
+<div class="container my-5">
+
+
+  <!-- Section: Block Content -->
+  <section class="dark-grey-text text-center">
+
+    <h3 class="font-weight-bold mb-4 pb-2">{{ username }}'s Profile</h3>
+    <p class="text-muted w-responsive mx-auto mb-5">Changed your opinion of a book? Search for the book name to retrieve your review:</p>
+
+  <!-- Search form (for reviews submitted by user) -->
+
+<form class="form-inline d-flex justify-content-center md-form form-sm mt-0" methods="POST" action="{{ url_for('search_review') }}">
+  <i class="fas fa-search" aria-hidden="true"></i>
+  <input class="form-control form-control-sm ml-3 w-75 validate" name="profile_review_search" id="profile_review_search" type="text" placeholder="Search"
+    aria-label="Search">
+  <label name="profile_review_search" id="profile_review_search"></label>
+    aria-label="Search">
+
+</form>
+
+
+
 
 {% endblock %}
