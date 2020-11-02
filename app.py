@@ -92,6 +92,13 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+@app.route("/search_review", methods=["GET", "POST"])
+def search_review():
+    profile_review_search = request.form.get("query")
+    review = list(mongo.db.reviews.find({"$text": {"$search_review": profile_review_search}}))
+    return render_template("profile.html", review=review)
+
+
 @app.route("/logout")
 def logout():
     flash("You've successfully logged out")
