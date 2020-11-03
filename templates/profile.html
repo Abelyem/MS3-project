@@ -1,92 +1,109 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="container my-5">
-
-
   <!-- Section: Block Content -->
   <section class="dark-grey-text text-center">
-
     <h3 class="font-weight-bold mb-4 pb-2">{{ username }}'s Profile</h3>
-    <p class="text-muted w-responsive mx-auto mb-5">Changed your opinion of a book? Search for the book name to retrieve your review:</p>
+    <p class="text-muted w-responsive mx-auto mb-5">
+      Changed your opinion of a book? Search for the book name to retrieve your
+      review:
+    </p>
 
-  <!-- Search form (for reviews submitted by user) -->
+    <!-- Search form (for reviews submitted by user) -->
 
-<form class="form-inline d-flex justify-content-center md-form form-sm mt-0" method="POST" action="{{ url_for('search_review') }}">
-  <i class="fas fa-search" aria-hidden="true"></i>
-  <input class="form-control form-control-sm ml-3 w-75 validate" name="profile_review_search" 
-  id="profile_review_search" type="text" placeholder="Search" required>
-  <label for="profile_review_search"></label>
-</form>
+    <form
+      class="form-inline d-flex justify-content-center md-form form-sm mt-0"
+      method="POST"
+      action="{{ url_for('search_review') }}">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <input
+        class="form-control form-control-sm ml-3 w-75 validate"
+        name="profile_review_search"
+        id="profile_review_search"
+        type="text"
+        placeholder="Search"
+        required
+      />
+      <label for="profile_review_search"></label>
+    </form>
 
- 
-       {% for review in reviews %}
-
-        {% if session["user"] == review.created_by %}        
+    {% for review in reviews %} 
+    
+    {% if session["user"] == review.created_by %}
 
     <div class="media">
-      <img class=" card-img-100 rounded-circle z-depth-1-half d-flex mr-3" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Generic placeholder image">
+      <img
+        class="card-img-100 rounded-circle z-depth-1-half d-flex mr-3"
+        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+        alt="Generic placeholder image"
+      />
       <div class="media-body">
-
         <a>
-          <h5 class="user-name font-weight-bold"><small>{{ review.book_name }}</small></h5>
+          <h5 class="user-name font-weight-bold">
+            <small>{{ review.book_name }}</small>
+          </h5>
         </a>
 
         <p class="dark-grey-text article">{{ review.user_review }}</p>
-        <h6 class="user-name font-weight-bold"><small>{{ review.created_by }}</small></h6>
+        <h6 class="user-name font-weight-bold">
+          <small>{{ review.created_by }}</small>
+        </h6>
 
-        <button type="button" class="btn btn-sm" ><a href="{{ url_for('edit_review', review_id=review._id) }}">Edit review</a></button>
-        <button type="button" class="btn btn-sm"><a href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a></button>
+        <button type="button" class="btn btn-sm">
+          <a href="{{ url_for('edit_review', review_id=review._id) }}">Edit review</a>
+        </button>
+        <button type="button" class="btn btn-sm">
+          <a href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a>
+        </button>
 
         {% else %}
 
         <h5>No results found</h5>
 
         {% endif %}
-        <hr>
+        <hr />
       </div>
     </div>
 
     {% endfor %}
 
-  <div class="container my-5 py-5 z-depth-1">
+    <div class="container my-5 py-5 z-depth-1">
+      <!--Section: Content-->
+      <section class="px-md-5 mx-md-5 dark-grey-text text-center text-lg-left">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div
+            class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="{{ url_for('static', filename='images/profile.html-books.png') }}"
+              class="img-fluid"
+              alt="Image of stacked books"
+            />
+          </div>
+          <!--Grid column-->
 
- 
-    <!--Section: Content-->
-    <section class="px-md-5 mx-md-5 dark-grey-text text-center text-lg-left">
+          <!--Grid column-->
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <h3 class="font-weight-bold">Read something new recently?</h3>
 
-      <!--Grid row-->
-      <div class="row">
+            <p class="font-weight-bold">Submit a review!</p>
 
-        <!--Grid column-->
-        <div class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center">
-
-          <img src="{{ url_for('static', filename='images/profile.html-books.png') }}" class="img-fluid" alt="Image of stacked books">
-
+            <p class="text-muted">
+              Help others find those hidden gems and leave a review of books
+              you've read.
+            </p>
+            <a class="font-weight-bold" href="{{ url_for('add_review') }}"
+              ><i class="fas fa-angle-right ml-2"></i> Add review</a>
+          </div>
+          <!--Grid column-->
         </div>
-        <!--Grid column-->
+        <!--Grid row-->
+      </section>
+      <!--Section: Content-->
+    </div>
 
-        <!--Grid column-->
-        <div class="col-lg-6 mb-4 mb-lg-0">
-
-          <h3 class="font-weight-bold">Read something new recently?</h3>
-
-          <p class="font-weight-bold">Submit a review!</p>
-
-          <p class="text-muted">Help others find those hidden gems and leave a review of books you've read.</p>
-            <a class="font-weight-bold" href="{{ url_for('add_review') }}"><i class="fas fa-angle-right ml-2"></i> Add review</a>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-
-    </section>
-    <!--Section: Content-->
-
-
-  </div>
-
-            
-{% endblock %}
+    {% endblock %}
+  </section>
+</div>
