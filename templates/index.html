@@ -10,14 +10,11 @@
       <h4 class="mb-4 pb-2 px-md-5 mx-md-5 font-weight-bold">Find books you love and help others do the same!</h4>
       <p class="mb-4 pb-2 px-md-5 mx-md-5 font-weight-bold">Create an account below, and leave reviews of books you've enjoyed...or books you've not enjoyed, and help others make
       an informed decision on books to read!</p>
-      <a class="btn btn-blue"><i class="fas fa-user-plus"></i> Sign up</a>
-
+      <a class="btn btn-blue" href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Sign up</a>
     </div>
   </div>
 </div>
 <!-- Jumbotron -->
-
-
 
 
 <div class="container my-5" id="index-page-reviews">
@@ -30,14 +27,12 @@
        {% for review in reviews %}
 
     <div class="media">
-      <img class=" card-img-100 rounded-circle z-depth-1-half d-flex mr-3" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Generic placeholder image">
+      <img class=" card-img-100 rounded-circle z-depth-1-half d-flex mr-3" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Placeholder image">
       <div class="media-body">
 
         <a>
           <h5 class="user-name font-weight-bold"><small>{{ review.book_name }}</small></h5>
         </a>
-        <!-- Rating -->
-        <!--- INSERT EDITABLE STAR SYSTEM -->
 
         <p class="dark-grey-text article">{{ review.user_review }}</p>
         <h6 class="user-name font-weight-bold"><small>{{ review.created_by }}</small></h6>
