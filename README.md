@@ -53,5 +53,6 @@ from A-Z, and numbers from 0-9
 email recovery system if any users have forgotten their password. 
 - A password check which ensures the user has entered the correct password during the Sign up page, to avoid users not being able to log back into their account
 should they have made a typo/some form of error during the initial sign up stage
+- A search by genres and search by author feature which allows users to find a specific book, or specific type of books
 
 
