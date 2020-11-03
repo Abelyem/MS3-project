@@ -1,9 +1,26 @@
 {% extends "base.html" %} {% block content %}
 
+<!-- Jumbotron -->
+<div class="card card-image" style="background-image: url({{ url_for('static', filename='images/index-page-jumbotron-image.png') }})">
+  <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+    <div class="py-5">
+
+      <!-- Content -->
+      <h2 class="card-title h2 my-4 py-2">Book Den <i class="fas fa-book-reader"></i></h2>
+      <h4 class="mb-4 pb-2 px-md-5 mx-md-5 font-weight-bold">Find books you love and help others do the same!</h4>
+      <p class="mb-4 pb-2 px-md-5 mx-md-5 font-weight-bold">Create an account below, and leave reviews of books you've enjoyed...or books you've not enjoyed, and help others make
+      an informed decision on books to read!</p>
+      <a class="btn btn-blue"><i class="fas fa-user-plus"></i> Sign up</a>
+
+    </div>
+  </div>
+</div>
+<!-- Jumbotron -->
+
+
+
 
 <div class="container my-5" id="index-page-reviews">
-
-
   <!--Section: Block Content-->
   <section class="dark-grey-text mb-5">
 
