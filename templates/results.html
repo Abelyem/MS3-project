@@ -1,54 +1,21 @@
 {% extends "base.html" %} {% block content %} {% for item in data["items"]: %}
 
-<div class="container">
-  <div class="row">
-    <div class="col col-example">
-      <div class="row">
-        <div class="col-md-8">
-
-{% if (item.volumeInfo.title == "" or item.volumeInfo.authors == "") %}
-
-     <h5> No book with that title can be located </h5>
-
-{% else %}
-            <h6><strong>Title:</strong> {{ item.volumeInfo.title }}</h6>
-            <h6><strong>Description:</strong><p> {{ item.volumeInfo.description }}</p></h6>
-        </div>
-        <div class="col-md-4">
-          <img src="{{ item.volumeInfo.imageLinks.thumbnail }}" />
-        </div>
+<div class="card">
+  <h5 class="card-header h5">{{ item.volumeInfo.title }}</h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-8">
+        <h6 class="card-title">{{ item.volumeInfo.description }}</h6>
+      </div>
+      <div class="col-4">
+        <img src="{{ item.volumeInfo.imageLinks.thumbnail }}" />
       </div>
     </div>
+
+    <button class="btn btn-primary" type="button">
+      <a id="book-preview" href="{{ item.volumeInfo.previewLink }}" target="_blank">Book preview</a>
+    </button>
   </div>
 </div>
 
-{% endif %}
-
-
-{% endfor %} 
-
-<div class="container">
-  <div class="row">
-    <div class="col col-example">
-      <div class="row">
-        <div class="col-md-8">
-
- {% for review in reviews %}
-
-
-            <h6><strong>{{ review.book_name }}</strong></h6>
-            <h6><strong><p> {{ review.user_review }}</p></strong></h6>
-            <h6><strong><p> {{ review.created_by }}</p></strong></h6>
-
- {% endfor %}
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{% endblock %}
-
-
+{% endfor %} {% endblock %}
