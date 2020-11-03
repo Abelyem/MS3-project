@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %} 
+
+{% if session["user"] %}
+
+<div class="jumbotron">
+  <h4 class="display-4">We couldn't find what you were searching for!</h4>
+  <hr class="my-4" />
+</div>
+
+{% else %}
+
+<div class="jumbotron">
+  <h2 class="display-4">We couldn't find what you were searching for!</h2>
+  <hr class="my-4" />
+  <p>It looks like you're not yet a registered member - sign up below!</p>
+  <a class="btn btn-blue" href="{{ url_for('register') }}"
+    ><i class="fas fa-user-plus"></i> Sign up</a
+  >
+</div>
+
+{% endif %} 
+
+{% endblock %}
