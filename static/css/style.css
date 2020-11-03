@@ -1,6 +1,3 @@
-.body {
-    background-color: red;
-}
 
 
 .card {
@@ -20,8 +17,10 @@
 
 /*--- Styling for index.html */ 
 
-/* creates padding between each user review visible on index.html ----*/
-
 .media {
     padding: 20px 0;
+}
+
+#book-preview {
+    color: #fff;
 }
