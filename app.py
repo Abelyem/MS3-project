@@ -28,11 +28,17 @@ def index():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    searchterm = request.form.get('searchbox')
-    URL = "https://www.googleapis.com/books/v1/volumes?q=" + searchterm
-    r = requests.get(url=URL)
-    data = r.json()
-    return render_template("results.html", data=data)
+    try:
+        searchterm = request.form.get('searchbox')
+        URL = "https://www.googleapis.com/books/v1/volumes?q=" + searchterm
+        r = requests.get(url=URL)
+        data = r.json()
+        return render_template("results.html", data=data)
+
+    except:
+        return render_template("error.html")
+    else:
+        return render_template("results.html", data=data)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -94,9 +100,10 @@ def profile(username):
 
 @app.route("/search_review", methods=["GET", "POST"])
 def search_review():
-    profile_review_search = request.form.get("query")
-    review = list(mongo.db.reviews.find({"$text": {"$search_review": profile_review_search}}))
-    return render_template("profile.html", review=review)
+    profile_review_search = request.form.get("profile_review_search")
+    reviews = list(mongo.db.reviews.find(
+        {"$text": {"$search": profile_review_search}}))
+    return render_template("profile.html", reviews=reviews)
 
 
 @app.route("/logout")
@@ -119,7 +126,7 @@ def add_review():
         flash("Your review has been added!")
         return redirect(url_for("index"))
 
-    genre = mongo.db.genre.find().sort("genre_name", 1)
+    genre = mongo.db.genre.find().sort("genre_name", -1)
     return render_template("add_review.html", genre=genre)
 
 
