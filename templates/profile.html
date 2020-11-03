@@ -11,10 +11,10 @@
 
   <!-- Search form (for reviews submitted by user) -->
 
-<form class="form-inline d-flex justify-content-center md-form form-sm mt-0" methods="POST" action="{{ url_for('search_review') }}">
+<form class="form-inline d-flex justify-content-center md-form form-sm mt-0" method="POST" action="{{ url_for('search_review') }}">
   <i class="fas fa-search" aria-hidden="true"></i>
   <input class="form-control form-control-sm ml-3 w-75 validate" name="profile_review_search" 
-  id="profile_review_search" type="text" placeholder="Search" aria-label="Search" required>
+  id="profile_review_search" type="text" placeholder="Search" required>
   <label for="profile_review_search"></label>
 </form>
 
@@ -58,6 +58,29 @@
 
 
   </div>
+<hr>
+       {% for review in reviews %}
+
+    <div class="media">
+      <img class=" card-img-100 rounded-circle z-depth-1-half d-flex mr-3" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Generic placeholder image">
+      <div class="media-body">
+
+        <a>
+          <h5 class="user-name font-weight-bold"><small>{{ review.book_name }}</small></h5>
+        </a>
+
+        <p class="dark-grey-text article">{{ review.user_review }}</p>
+        <h6 class="user-name font-weight-bold"><small>{{ review.created_by }}</small></h6>
+
+        {% if session["user"] == review.created_by %}        
+        <button type="button" class="btn btn-sm" ><a href="{{ url_for('edit_review', review_id=review._id) }}">Edit review</a></button>
+        <button type="button" class="btn btn-sm"><a href="{{ url_for('delete_review', review_id=review._id) }}">Delete</a></button>
+        {% endif %}
+        <hr>
+      </div>
+    </div>
+
+             {% endfor %}
 
 
             
